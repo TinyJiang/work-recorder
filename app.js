@@ -4,8 +4,11 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
-var routes = require('./routes/index');
+var routes = require('./src/routes/index');
+
+var daoinit = require('./src/dao/init');
 
 var app = express();
 
@@ -19,7 +22,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'keyboard cat',
+    cookie: {
+        maxAge: 60000
+    }
+}));
+app.use(express.static(path.join(__dirname, 'webapp')));
 
 app.use('/', routes);
 
@@ -37,7 +48,8 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        console.log(err);
+        res.render('error.html', {
             message: err.message,
             error: err
         });
@@ -48,11 +60,15 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    console.log(err);
+    res.render('error.html', {
         message: err.message,
         error: {}
     });
 });
+
+//connect db
+daoinit.connect();
 
 
 module.exports = app;

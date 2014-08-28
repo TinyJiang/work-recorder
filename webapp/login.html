@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="./js/lib/bootstrap-3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/common.css">
+		<link rel="stylesheet" type="text/css" href="./css/login.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row text-center">
+				<div class="col-md-4 div-be-center login-box">
+					<div class="login-form-bg"></div>
+					<form class="form-horizontal" role="form" action="/doLogin" method="post">
+						<div class="form-group">
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon">用户</span>
+								<input type="text" class="form-control" placeholder="输入用户名...">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group input-group-lg">
+								<span class="input-group-addon">密码</span>
+								<input type="text" class="form-control" placeholder="输入密码...">
+							</div>
+						</div>
+						<div class="form-group" style="margin-bottom:0px;">
+							<div class="text-right">
+								<button type="submit" class="btn btn-default">登录</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./js/login/login.js"></script>
+	</body>
+</html>
