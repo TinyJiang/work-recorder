@@ -30,9 +30,10 @@ app.use(session({
         maxAge: 60000
     }
 }));
-app.use(express.static(path.join(__dirname, 'webapp')));
 
 app.use('/', routes);
+
+app.use(express.static(path.join(__dirname, 'webapp')));
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,7 +61,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    console.log(err);
+    console.log(err.message);
     res.render('error.html', {
         message: err.message,
         error: {}
@@ -69,6 +70,5 @@ app.use(function(err, req, res, next) {
 
 //connect db
 daoinit.connect();
-
 
 module.exports = app;

@@ -1,5 +1,5 @@
 exports.authorize = function(req, res, next) {
-    if (!req.session.username) {
+    if (!req.session.user) {
         res.redirect('/login');
     } else {
         next();

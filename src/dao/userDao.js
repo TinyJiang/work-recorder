@@ -3,21 +3,20 @@ var User = require('../bean/User');
 var dao = {};
 
 dao.add = function(userJSON) {
-    var uJSON = {
-        username: 'root',
-        password: 'eastcom12#$',
-        createTime: '2014-08-28 13:35:22',
-        owner: ''
-    };
-
-    var u = new User(uJSON);
+    var u = new User(userJSON);
     console.log('saving user...................');
     u.save(function(err) {
         if (err) return handleError(err);
-        console.log(u);
         console.log('saving completed.');
     });
 };
+
+dao.findByUsername = function(username, cb) {
+    if (username && username.length)
+        return User.findOne({
+            username: username
+        }).exec(cb);
+}
 
 dao.del = function() {};
 

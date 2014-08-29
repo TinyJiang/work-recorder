@@ -1,5 +1,5 @@
 body{
-	background-image:url("../images/login/bg.jpg");
+	/*background-image:url("../images/login/bg.jpg");*/
 }
 
 .login-box{
@@ -17,4 +17,5 @@ body{
 	background: #000;
 	opacity: 0.1;
 	border-radius: 6px;
+	display: none;
 }
