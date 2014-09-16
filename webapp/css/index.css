@@ -1,0 +1,73 @@
+body{
+	background-image:url("../images/login/bg3.jpg");
+	color: #fff;
+}
+
+.main-cnt{
+	position: relative;
+}
+
+.title-cnt{
+	background-color: rgba(0,0,0,0.2);
+	color: #fff;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.nav-custom li{
+	transition: background-color 300ms linear;
+}
+
+.nav-custom li a{
+	color: #fff;
+}
+
+.nav-custom li a:hover{
+	background-color: transparent;
+}
+
+.nav-custom li:hover{
+	background-color: rgba(0,0,0,0.2);
+}
+
+.nav-custom li.active{
+	background-color: rgba(0,0,0,0.3);
+}
+
+#log_table{
+	margin: 0px;
+}
+
+#log_table td, #log_table th{
+	border: 2px solid transparent;
+	position: relative;
+}
+
+#log_table td{
+	line-height: 34px;	
+}
+
+#log_table td:hover .edit-btn{
+	display: block;
+}
+
+#log_table .col1{
+	width: 120px;
+	text-align: center;
+}
+
+#log_table .edit-btn{
+	position: absolute;
+	display: none;
+	bottom: 8px;
+	right: 8px;
+}
+
+.rec-content{
+	word-break:break-all;
+}
+
+.tip{
+	font-size: 13px;
+	color: #DFD7D7;
+}

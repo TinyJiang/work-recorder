@@ -3,3 +3,20 @@ div.div-be-center{
 	margin-left:auto !important;
 	margin-right:auto !important;
 }
+
+.absolute{
+	position: absolute;
+}
+
+.bg{
+	background-color: rgba(0,0,0,0.1);
+}
+
+.btn-opacity{
+	background-color: rgba(0,0,0,0.1);
+}
+
+.btn-opacity:hover{
+	color: #fff;
+	background-color: rgba(0,0,0,0.2);
+}

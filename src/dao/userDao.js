@@ -1,4 +1,5 @@
 var User = require('../bean/User');
+var utils = require('../common/utils.js');
 
 var dao = {};
 
@@ -6,7 +7,7 @@ dao.add = function(userJSON) {
     var u = new User(userJSON);
     console.log('saving user...................');
     u.save(function(err) {
-        if (err) return handleError(err);
+        if (err) return utils.handleError(err);
         console.log('saving completed.');
     });
 };

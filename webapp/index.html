@@ -1,8 +1,64 @@
 <!DOCTYPE html>
-	<html>
-		<head>
-		</head>
-		<body>
-			asdasdasdsa
-		</body>
-	</html>
+<html lang="zh-CN" ng-app="workLogApp">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="./js/lib/bootstrap-3.2.0/css/bootstrap.min.css">
+		<script src="./js/lib/jquery-2.1.1/jquery-2.1.1.min.js"></script>
+		<script src="./js/lib/angular-1.3.0/angular.min.js"></script>
+		<link rel="stylesheet" href="./css/common.css">
+		<link rel="stylesheet" href="./css/index.css">
+		<title>WORK LOG</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row title-cnt bg">
+				<h2>工作日志记录</h2>
+			</div>
+			<div class="row" ng-controller="workLogController">
+				<div class="col-md-3">
+					<ul class="nav nav-custom nav-stacked" role="tablist">
+						<li role="presentation" class="{{week.active?'active':''}} bg" ng-repeat="week in weeks">
+							<a href="" ng-click="switchWeek(week)">{{week.text}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<div class="main-cnt">
+						<table class="table table-bordered" id="log_table">
+							<tr ng-repeat="rec in currentWeekRecs">
+								<td class="col1 bg">
+									{{rec.date}}
+								</td>
+								<td class="bg">
+									<div ng-hide="rec.editing">
+										<span ng-hide="rec.content.length==0" >
+										<p class="rec-content">{{rec.content}}</p>
+										<p class="text-muted tip">最后更新时间：{{rec.recordTime}}</p>
+										</span>
+										<span ng-show="rec.content.length==0" class="label label-warning">
+										未填写
+										</span>
+										<button ng-show="rec.canEdit" class="btn btn-opacity edit-btn" ng-click="rec.editing=true">
+										编辑
+										</button>
+									</div>
+									<form ng-show="rec.editing">
+										<div class="form-group">
+											<input class="form-control" ng-model="rec._content" type="text" value="{{rec.content}}"/>
+										</div>
+										<div class="pull-right">
+											<button class="btn btn-success" ng-click="submitRecoder(rec)">确认</button>
+											<button class="btn btn-danger" ng-click="rec.editing=false">取消</button>
+										</div>
+									</form>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/index/utils.js"></script>
+		<script src="./js/index/index.js"></script>
+	</body>
+</html>

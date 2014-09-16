@@ -27,7 +27,7 @@ app.use(session({
     saveUninitialized: true,
     secret: 'keyboard cat',
     cookie: {
-        maxAge: 60000
+        maxAge: 1200000
     }
 }));
 
@@ -49,8 +49,8 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        console.log(err);
-        res.render('error.html', {
+        console.log(err.message);
+        res.render('error.jade', {
             message: err.message,
             error: err
         });
@@ -62,9 +62,9 @@ if (app.get('env') === 'development') {
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     console.log(err.message);
-    res.render('error.html', {
+    res.render('error.jade', {
         message: err.message,
-        error: {}
+        error: err
     });
 });
 
